@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 262.3369, g: 325.0498, b: 430.21924, a: 1}
+  m_IndirectSpecularColor: {r: 215.61914, g: 226.90332, b: 204.93488, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -408,7 +408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 441482e8936e35048a1dffac814e3ef8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Profile: {fileID: 0}
+  m_Profile: {fileID: 11400000, guid: fa1091ec0277d3f48bb8b0a5ff25c5f0, type: 2}
   m_StaticLightingSkyUniqueID: 0
   m_StaticLightingCloudsUniqueID: 0
   m_StaticLightingVolumetricClouds: 0
@@ -1234,13 +1234,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1254392268376516840, guid: 950a19252ba28b04da0a0f64723129bc, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254392268376516840, guid: 950a19252ba28b04da0a0f64723129bc, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254392268376516840, guid: 950a19252ba28b04da0a0f64723129bc, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254392268376516840, guid: 950a19252ba28b04da0a0f64723129bc, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 1269224221360749416, guid: 950a19252ba28b04da0a0f64723129bc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1443747030520446552, guid: 950a19252ba28b04da0a0f64723129bc, type: 3}
       propertyPath: m_Name
       value: UIRoot_Pref
-      objectReference: {fileID: 0}
-    - target: {fileID: 1479876198920481601, guid: 950a19252ba28b04da0a0f64723129bc, type: 3}
-      propertyPath: m_text
-      value: Game Scene
       objectReference: {fileID: 0}
     - target: {fileID: 2248712642585949962, guid: 950a19252ba28b04da0a0f64723129bc, type: 3}
       propertyPath: m_Pivot.x
