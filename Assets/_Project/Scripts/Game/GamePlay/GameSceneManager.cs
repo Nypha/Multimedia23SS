@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameSceneManager : MonoBehaviour
 {
@@ -17,6 +18,20 @@ public class GameSceneManager : MonoBehaviour
         else
         {
             Logger.LogError(LogCategory.Scenes, $"Scene manager already set to {Instance.name}!");
+        }
+    }
+    private void Update()
+    {
+        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            if (GameUI.Instance.IsMenuActive)
+            {
+                GameUI.Instance.HideMenu();
+            }
+            else
+            {
+                GameUI.Instance.ShowMenu();
+            }
         }
     }
 

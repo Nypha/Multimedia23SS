@@ -5,9 +5,14 @@ using UnityEngine;
 public class GameUI : MonoBehaviour
 {
     public static GameUI Instance { get; private set; }
+    public bool IsMenuActive => mainMenu.activeSelf;
+
 
     [SerializeField] private CanvasGroup minimap;
+    [SerializeField] private GameObject mainMenu;
+    [SerializeField] private GameObject characterController;
     [SerializeField] private float minimapAlphaSpeed;
+
 
     private float minimapTargetAlpha;
 
@@ -53,6 +58,17 @@ public class GameUI : MonoBehaviour
         HideMinimap(false);
     }
 
+    public void ShowMenu()
+    {
+        mainMenu.SetActive(true);
+        characterController.SetActive(false);
+    }
+    public void HideMenu()
+    {
+        mainMenu.SetActive(false);
+        characterController.SetActive(true);
+    }
+
     public void ShowMinimap()
     {
         minimapTargetAlpha = 1f;
@@ -64,5 +80,5 @@ public class GameUI : MonoBehaviour
         {
             minimap.alpha = 0f;
         }
-    }
+    }    
 }
