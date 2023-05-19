@@ -23,17 +23,22 @@ public class PickUpLetter_Script : MonoBehaviour
 
     void Update()
     {
-        if(Keyboard.current.eKey.IsPressed())
+        if(Keyboard.current.eKey.wasPressedThisFrame)
         {
             if(InReach == true)
             {
-                MessagePanel.SetActive (false);
-                InReach = false;
-                note.enabled = true;
+                if(note.enabled == false)
+                {
+                    MessagePanel.SetActive(false);
+                    InReach = false;
+                    note.enabled = true;
+                }
+                else if (note.enabled == true)
+                {
+                    note.enabled = false;
+                }
             }
         }
-        Logger.Log("Updated");
-
     }
 
     void OnTriggerEnter(Collider other)
