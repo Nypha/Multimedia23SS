@@ -16,6 +16,7 @@ public class GameUI : MonoBehaviour
     [SerializeField] private float minimapAlphaSpeed;
     [SerializeField] private GameObject timerGo;
     [SerializeField] private Slider timerSlider;
+    [SerializeField] private GameObject deathHint;
 
 
     private float minimapTargetAlpha;
@@ -96,5 +97,16 @@ public class GameUI : MonoBehaviour
     public void SetTimer(float progress)
     {
         timerSlider.value = progress;
+    }
+
+    public void ShowDeathHint(float duration)
+    {
+        StartCoroutine(ShowDeathHintCR(duration));
+    }
+    private IEnumerator ShowDeathHintCR(float duration)
+    {
+        deathHint.SetActive(true);
+        yield return new WaitForSeconds(duration);
+        deathHint.SetActive(false);
     }
 }

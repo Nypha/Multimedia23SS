@@ -11,6 +11,7 @@ public class GameSceneManager : MonoBehaviour
 
     [SerializeField] private float maxTimeSeconds;
     [SerializeField] private float toggleTimerUiSecondsLeft;
+    [SerializeField] private CharacterController player;
 
     private Vector3 playerStartPosition;
 
@@ -29,6 +30,7 @@ public class GameSceneManager : MonoBehaviour
         {
             Logger.LogError(LogCategory.Scenes, $"Scene manager already set to {Instance.name}!");
         }
+        playerStartPosition = player.transform.localPosition;
     }
     private void Update()
     {
@@ -63,6 +65,12 @@ public class GameSceneManager : MonoBehaviour
     {
         isTimerRunning = false;
         hasTimerUiToggled = false;
+        // player.GetComponent<WarpCharacterController>().WarpToPosition(playerStartPosition);
+
+        player.enabled = false;
+        player.transform.localPosition = playerStartPosition;
+        player.enabled = true;
+
         OnResetScene?.Invoke();
     }
 

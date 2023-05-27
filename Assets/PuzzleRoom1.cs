@@ -12,8 +12,8 @@ public class PuzzleRoom1 : MonoBehaviour
     {
         if (isComplete && !prevComplete)
         {
-            prevComplete = true;
             onComplete?.Invoke();
         }
+        prevComplete = isComplete;
     }
 }

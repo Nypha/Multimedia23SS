@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -22,6 +23,7 @@ public class InteractionTrigger : MonoBehaviour
     private void Start()
     {
         ui.SetActive(false);
+        GameSceneManager.Instance.OnResetScene += OnReset;
     }
     private void Update()
     {
@@ -66,6 +68,18 @@ public class InteractionTrigger : MonoBehaviour
             isActiveForInput = false;
             onTriggerExit?.Invoke();
             ui.SetActive(false);
+        }
+    }
+    private void OnDestroy()
+    {
+        GameSceneManager.Instance.OnResetScene -= OnReset;
+    }
+
+    private void OnReset()
+    {
+        if (deactivateAfterInput)
+        {
+            trigger.enabled = true;
         }
     }
 

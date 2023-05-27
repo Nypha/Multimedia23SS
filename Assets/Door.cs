@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Door : MonoBehaviour
@@ -6,6 +7,20 @@ public class Door : MonoBehaviour
     [SerializeField] private float yRotationOpen;
 
     private bool isOpen;
+    private Vector3 initialDoorState;
+
+
+    private void Start()
+    {
+        GameSceneManager.Instance.OnResetScene += OnReset;
+        initialDoorState = anchor.localEulerAngles;
+    }
+
+    private void OnReset()
+    {
+        isOpen = false;
+        anchor.localEulerAngles = initialDoorState;
+    }
 
     private void Update()
     {
@@ -13,6 +28,10 @@ public class Door : MonoBehaviour
         {
             anchor.transform.Rotate(Vector3.up, yRotationOpen * Time.deltaTime, Space.Self);
         }
+    }
+    private void OnDestroy()
+    {
+        GameSceneManager.Instance.OnResetScene -= OnReset;
     }
 
     public void Open()
