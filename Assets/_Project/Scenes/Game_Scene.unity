@@ -218,6 +218,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Annotation_Pref (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3174188278172128581, guid: e6cde450931e00a499a44af7b2350eb4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3174188278172128582, guid: e6cde450931e00a499a44af7b2350eb4, type: 3}
       propertyPath: m_text
       value: "Pool Area - you'll have to navigate over the pool. \nMoving around
@@ -544,6 +548,10 @@ PrefabInstance:
     - target: {fileID: 3174188278172128581, guid: e6cde450931e00a499a44af7b2350eb4, type: 3}
       propertyPath: m_Name
       value: Annotation_Pref
+      objectReference: {fileID: 0}
+    - target: {fileID: 3174188278172128581, guid: e6cde450931e00a499a44af7b2350eb4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3174188278172128582, guid: e6cde450931e00a499a44af7b2350eb4, type: 3}
       propertyPath: m_text
@@ -1488,6 +1496,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 1dcc22dc33642fd47992ffc9fdac6a1f, type: 2}
+    - target: {fileID: 3766215644393395051, guid: 7730f4e5bce0f6f41822342f7ee818e2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766215644393395051, guid: 7730f4e5bce0f6f41822342f7ee818e2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.251
+      objectReference: {fileID: 0}
     - target: {fileID: 4017111066634200762, guid: 7730f4e5bce0f6f41822342f7ee818e2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

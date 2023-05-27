@@ -11,6 +11,7 @@ public class InteractionTrigger : MonoBehaviour
 
 
     [SerializeField] private Collider trigger;
+    [SerializeField] private Key key;
     [SerializeField] private bool deactivateAfterInput = true;
     [SerializeField] private GameObject ui;
     
@@ -26,7 +27,18 @@ public class InteractionTrigger : MonoBehaviour
     {
         if (isActiveForInput)
         {
-            if (Keyboard.current.eKey.wasPressedThisFrame)
+            bool wasPressed = false;
+            switch (key)
+            {
+                case Key.E:
+                    wasPressed = Keyboard.current.eKey.wasPressedThisFrame;
+                    break;
+                case Key.R:
+                    wasPressed = Keyboard.current.rKey.wasPressedThisFrame;
+                    break;
+            }
+
+            if (wasPressed)
             {
                 onCallback?.Invoke();
                 if (deactivateAfterInput)
@@ -55,5 +67,11 @@ public class InteractionTrigger : MonoBehaviour
             onTriggerExit?.Invoke();
             ui.SetActive(false);
         }
+    }
+
+    private enum Key
+    {
+        E = 0,
+        R = 1,
     }
 }
