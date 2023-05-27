@@ -1,6 +1,8 @@
-﻿using System;
+﻿using PlasticPipe.Client;
+using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameUI : MonoBehaviour
 {
@@ -12,6 +14,8 @@ public class GameUI : MonoBehaviour
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject characterController;
     [SerializeField] private float minimapAlphaSpeed;
+    [SerializeField] private GameObject timerGo;
+    [SerializeField] private Slider timerSlider;
 
 
     private float minimapTargetAlpha;
@@ -56,6 +60,8 @@ public class GameUI : MonoBehaviour
     private void OnResetScene()
     {
         HideMinimap(false);
+        HideMenu();
+        timerGo.SetActive(false);
     }
 
     public void ShowMenu()
@@ -81,4 +87,14 @@ public class GameUI : MonoBehaviour
             minimap.alpha = 0f;
         }
     }    
+
+    public void ShowTimer()
+    {
+        timerGo.SetActive(true);
+        timerSlider.value = 0;
+    }
+    public void SetTimer(float progress)
+    {
+        timerSlider.value = progress;
+    }
 }
