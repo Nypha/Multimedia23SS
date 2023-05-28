@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 215.61914, g: 226.90332, b: 204.93488, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -962,6 +962,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Geometry_Pref
       objectReference: {fileID: 0}
+    - target: {fileID: 7513369254822718304, guid: 7730f4e5bce0f6f41822342f7ee818e2, type: 3}
+      propertyPath: onCallback.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513369254822718304, guid: 7730f4e5bce0f6f41822342f7ee818e2, type: 3}
+      propertyPath: onCallback.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513369254822718304, guid: 7730f4e5bce0f6f41822342f7ee818e2, type: 3}
+      propertyPath: onCallback.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 8889179029072650448}
+    - target: {fileID: 7513369254822718304, guid: 7730f4e5bce0f6f41822342f7ee818e2, type: 3}
+      propertyPath: onCallback.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513369254822718304, guid: 7730f4e5bce0f6f41822342f7ee818e2, type: 3}
+      propertyPath: onCallback.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: StartTimer
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513369254822718304, guid: 7730f4e5bce0f6f41822342f7ee818e2, type: 3}
+      propertyPath: onCallback.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: GameSceneManager, Game_ASMDEF
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513369254822718304, guid: 7730f4e5bce0f6f41822342f7ee818e2, type: 3}
+      propertyPath: onCallback.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7730f4e5bce0f6f41822342f7ee818e2, type: 3}
 --- !u!1001 &4997003580640409103
@@ -1036,6 +1064,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1923497455}
+    - target: {fileID: 8402652918206761112, guid: 63111285e5f5bd549b71ba15f81e8af5, type: 3}
+      propertyPath: maxTimeSeconds
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8402652918206761112, guid: 63111285e5f5bd549b71ba15f81e8af5, type: 3}
+      propertyPath: toggleTimerUiSecondsLeft
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8889179027895503503, guid: 63111285e5f5bd549b71ba15f81e8af5, type: 3}
       propertyPath: m_LocalPosition.y
       value: 9.11
@@ -1118,3 +1154,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63111285e5f5bd549b71ba15f81e8af5, type: 3}
+--- !u!114 &8889179029072650448 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8402652918206761112, guid: 63111285e5f5bd549b71ba15f81e8af5, type: 3}
+  m_PrefabInstance: {fileID: 8889179029072650447}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edfc3c45018b0b84a97651b1a4ae75ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

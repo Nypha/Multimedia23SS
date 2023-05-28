@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public class GameSceneManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class GameSceneManager : MonoBehaviour
     [SerializeField] private float maxTimeSeconds;
     [SerializeField] private float toggleTimerUiSecondsLeft;
     [SerializeField] private CharacterController player;
+    [SerializeField] private Volume deathVolume; 
 
     private Vector3 playerStartPosition;
 
@@ -30,6 +32,7 @@ public class GameSceneManager : MonoBehaviour
         {
             Logger.LogError(LogCategory.Scenes, $"Scene manager already set to {Instance.name}!");
         }
+        deathVolume.weight = 0f;
         playerStartPosition = player.transform.localPosition;
     }
     private void Update()
@@ -48,15 +51,24 @@ public class GameSceneManager : MonoBehaviour
 
         if (isTimerRunning)
         {
-            timerTime += Time.deltaTime;
-            if (!hasTimerUiToggled && maxTimeSeconds - timerTime < toggleTimerUiSecondsLeft)
+            timerTime -= Time.deltaTime;
+            deathVolume.weight = 1f - (timerTime / maxTimeSeconds);
+
+            if (!hasTimerUiToggled && timerTime < toggleTimerUiSecondsLeft)
             {
                 hasTimerUiToggled = true;
                 GameUI.Instance.ShowTimer();
             }
+
             if (hasTimerUiToggled)
             {
-                GameUI.Instance.SetTimer(toggleTimerUiSecondsLeft / (maxTimeSeconds - timerTime));
+                GameUI.Instance.SetTimer(timerTime / toggleTimerUiSecondsLeft);
+            }
+
+            if (timerTime <= 0)
+            {
+                ResetScene();
+                GameUI.Instance.ShowDeathHint(5);
             }
         }
     }
@@ -65,6 +77,7 @@ public class GameSceneManager : MonoBehaviour
     {
         isTimerRunning = false;
         hasTimerUiToggled = false;
+        deathVolume.weight = 0f;
         // player.GetComponent<WarpCharacterController>().WarpToPosition(playerStartPosition);
 
         player.enabled = false;
@@ -77,6 +90,6 @@ public class GameSceneManager : MonoBehaviour
     public void StartTimer()
     {
         isTimerRunning = true;
-        timerTime = 0;
+        timerTime = maxTimeSeconds;
     }
 }
