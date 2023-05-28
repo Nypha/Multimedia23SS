@@ -12,12 +12,14 @@ public class PickUpLetter_Script : MonoBehaviour
     private Image note;
 
     public GameObject MessagePanel;
+    public GameObject KeyPanel;
     public bool InReach = false;
     public InputAction pickUp;
 
     public void Start()
     {
         MessagePanel.SetActive(false);
+        KeyPanel.SetActive(false);
         note.enabled = false;
     }
 
@@ -30,6 +32,7 @@ public class PickUpLetter_Script : MonoBehaviour
                 if(note.enabled == false)
                 {
                     MessagePanel.SetActive(false);
+                    KeyPanel.SetActive(false);
                     InReach = false;
                     note.enabled = true;
                 }
@@ -46,6 +49,7 @@ public class PickUpLetter_Script : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             MessagePanel.SetActive(true);
+            KeyPanel.SetActive(true);
             InReach = true;
         }
     }
@@ -55,6 +59,7 @@ public class PickUpLetter_Script : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             MessagePanel.SetActive(false);
+            KeyPanel.SetActive(false);
             InReach = false;
             note.enabled = false;
         }
