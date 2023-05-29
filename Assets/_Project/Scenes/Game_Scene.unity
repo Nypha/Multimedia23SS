@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 215.61914, g: 226.90332, b: 204.93488, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1218,6 +1218,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 275424594, guid: 7730f4e5bce0f6f41822342f7ee818e2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2bf87b9a7c1f42d42b3c89697d89a60e, type: 2}
+    - target: {fileID: 632419438, guid: 7730f4e5bce0f6f41822342f7ee818e2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 66269e992bdd3db42b4a26044f616749, type: 2}
+    - target: {fileID: 1338423523308164471, guid: 7730f4e5bce0f6f41822342f7ee818e2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2bf87b9a7c1f42d42b3c89697d89a60e, type: 2}
+    - target: {fileID: 1725177795787448509, guid: 7730f4e5bce0f6f41822342f7ee818e2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2fa37750755731b4e81a11a833abbf92, type: 2}
+    - target: {fileID: 1742612740375838331, guid: 7730f4e5bce0f6f41822342f7ee818e2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2fa37750755731b4e81a11a833abbf92, type: 2}
     - target: {fileID: 3517473891701054473, guid: 7730f4e5bce0f6f41822342f7ee818e2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
