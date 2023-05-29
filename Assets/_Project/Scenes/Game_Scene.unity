@@ -1382,11 +1382,15 @@ PrefabInstance:
       objectReference: {fileID: 1923497455}
     - target: {fileID: 8402652918206761112, guid: 63111285e5f5bd549b71ba15f81e8af5, type: 3}
       propertyPath: maxTimeSeconds
-      value: 10
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8402652918206761112, guid: 63111285e5f5bd549b71ba15f81e8af5, type: 3}
+      propertyPath: timeAddPerKeyPress
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8402652918206761112, guid: 63111285e5f5bd549b71ba15f81e8af5, type: 3}
       propertyPath: toggleTimerUiSecondsLeft
-      value: 5
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8889179027895503503, guid: 63111285e5f5bd549b71ba15f81e8af5, type: 3}
       propertyPath: m_LocalPosition.y

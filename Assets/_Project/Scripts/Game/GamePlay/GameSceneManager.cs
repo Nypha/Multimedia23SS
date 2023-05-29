@@ -1,7 +1,9 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 using UnityEngine.Rendering;
+using Random = UnityEngine.Random;
 
 public class GameSceneManager : MonoBehaviour
 {
@@ -12,6 +14,7 @@ public class GameSceneManager : MonoBehaviour
 
     [SerializeField] private float maxTimeSeconds;
     [SerializeField] private float toggleTimerUiSecondsLeft;
+    [SerializeField] private float timeAddPerKeyPress;
     [SerializeField] private CharacterController player;
     [SerializeField] private Volume deathVolume; 
 
@@ -20,6 +23,8 @@ public class GameSceneManager : MonoBehaviour
     private bool isTimerRunning;
     private float timerTime;
     private bool hasTimerUiToggled;
+
+    private KeyControl currentTimerControl;
 
 
     private void Awake()
@@ -34,6 +39,10 @@ public class GameSceneManager : MonoBehaviour
         }
         deathVolume.weight = 0f;
         playerStartPosition = player.transform.localPosition;
+    }
+    private void Start()
+    {
+        GetNextTimerControl();
     }
     private void Update()
     {
@@ -71,6 +80,33 @@ public class GameSceneManager : MonoBehaviour
                 GameUI.Instance.ShowDeathHint(5);
             }
         }
+
+        if (hasTimerUiToggled && currentTimerControl != null)
+        {
+            if (currentTimerControl.wasPressedThisFrame)
+            {
+                timerTime += timeAddPerKeyPress;
+                GetNextTimerControl();
+            }
+        }
+    }
+
+    private void GetNextTimerControl()
+    {
+        switch (Random.Range(0, 10))
+        {
+            case 0: currentTimerControl = Keyboard.current.uKey; break;
+            case 1: currentTimerControl = Keyboard.current.pKey; break;
+            case 2: currentTimerControl = Keyboard.current.lKey; break;
+            case 3: currentTimerControl = Keyboard.current.jKey; break;
+            case 4: currentTimerControl = Keyboard.current.mKey; break;
+            case 5: currentTimerControl = Keyboard.current.hKey; break;
+            case 6: currentTimerControl = Keyboard.current.nKey; break;
+            case 7: currentTimerControl = Keyboard.current.tKey; break;
+            case 8: currentTimerControl = Keyboard.current.bKey; break;
+            case 9: currentTimerControl = Keyboard.current.iKey; break;
+        }
+        GameUI.Instance.SetTimerInputText(currentTimerControl.displayName);
     }
 
     public void ResetScene()

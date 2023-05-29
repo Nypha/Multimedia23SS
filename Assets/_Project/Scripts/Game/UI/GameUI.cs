@@ -1,6 +1,7 @@
 ﻿using PlasticPipe.Client;
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +17,7 @@ public class GameUI : MonoBehaviour
     [SerializeField] private float minimapAlphaSpeed;
     [SerializeField] private GameObject timerGo;
     [SerializeField] private Slider timerSlider;
+    [SerializeField] private TextMeshProUGUI tfDeathKeyHint;
     [SerializeField] private GameObject deathHint;
 
 
@@ -63,6 +65,7 @@ public class GameUI : MonoBehaviour
         HideMinimap(false);
         HideMenu();
         timerGo.SetActive(false);
+        tfDeathKeyHint.text = string.Empty;
     }
 
     public void ShowMenu()
@@ -98,6 +101,10 @@ public class GameUI : MonoBehaviour
     {
         timerSlider.value = progress;
     }
+    public void SetTimerInputText(string displayName)
+    {
+        tfDeathKeyHint.text = $"Press [{displayName}] for more time!";
+    }
 
     public void ShowDeathHint(float duration)
     {
@@ -108,5 +115,5 @@ public class GameUI : MonoBehaviour
         deathHint.SetActive(true);
         yield return new WaitForSeconds(duration);
         deathHint.SetActive(false);
-    }
+    }    
 }
