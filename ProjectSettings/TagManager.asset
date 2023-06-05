@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CinemachineTarget
   - MinimapTarget
+  - other
   layers:
   - Default
   - TransparentFX
