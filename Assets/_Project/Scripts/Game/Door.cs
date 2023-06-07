@@ -5,6 +5,8 @@ public class Door : MonoBehaviour
 {
     [SerializeField] private Transform anchor;
     [SerializeField] private float yRotationOpen;
+    [SerializeField] private AudioSource spraySound;
+
 
     private bool isOpen;
     private Vector3 initialDoorState;
@@ -37,5 +39,6 @@ public class Door : MonoBehaviour
     public void Open()
     {
         isOpen = true;
+        spraySound.Play();
     }
 }

@@ -7,6 +7,7 @@ TagManager:
   - CinemachineTarget
   - MinimapTarget
   - other
+  - WD40
   layers:
   - Default
   - TransparentFX

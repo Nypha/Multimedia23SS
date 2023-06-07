@@ -4,14 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class WD40_Riddle_Room1 : MonoBehaviour
+public class PuzzleRoom1_WD40 : MonoBehaviour
 {
-
-
-    [SerializeField]
-    int PickedUpWD40;
-
-    AudioSource puzzleSolved;
+    public bool isPickedUp = false;
     public GameObject MessagePanel;
     public GameObject KeyPanel;
     public GameObject WD40;
@@ -28,12 +23,6 @@ public class WD40_Riddle_Room1 : MonoBehaviour
 
     void Update()
     {
-        if (PickedUpWD40 >= 4)
-        {
-            puzzleSolved.Play();
-            //isCompleted == true;
-        }
-
         if (Keyboard.current.eKey.wasPressedThisFrame)
         {
             if (InReach == true)
@@ -41,15 +30,15 @@ public class WD40_Riddle_Room1 : MonoBehaviour
                 MessagePanel.SetActive(false);
                 KeyPanel.SetActive(false);
                 WD40.SetActive(false);
-                PickedUpWD40++;
                 InReach = false;
+                isPickedUp = true;
             }
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider WD40)
     {
-        if (other.CompareTag("Player"))
+        if (WD40.CompareTag("Player"))
         {
             MessagePanel.SetActive(true);
             KeyPanel.SetActive(true);
@@ -60,10 +49,10 @@ public class WD40_Riddle_Room1 : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider WD40)
     {
-        if (other.CompareTag("Player"))
-        {
+        if (WD40.CompareTag("Player"))
+        { 
             MessagePanel.SetActive(false);
             KeyPanel.SetActive(false);
             InReach = false;

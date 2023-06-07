@@ -5,7 +5,7 @@ public class PuzzleRoom1 : MonoBehaviour
 {
     public UnityEvent onComplete;
 
-    [SerializeField] private bool isComplete;
+    [SerializeField] public bool isComplete;
 
     private bool prevComplete;
     private void Update()
