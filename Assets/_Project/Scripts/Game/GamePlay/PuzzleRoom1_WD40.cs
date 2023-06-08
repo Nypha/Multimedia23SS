@@ -12,13 +12,11 @@ public class PuzzleRoom1_WD40 : MonoBehaviour
     public GameObject WD40;
     public bool InReach = false;
     public InputAction pickUp;
-
     public void Start()
     {
         MessagePanel.SetActive(false);
-        MessagePanel.gameObject.SetActive(false);
-        KeyPanel.gameObject.SetActive(false);
         KeyPanel.SetActive(false);
+        GameSceneManager.Instance.OnResetScene += OnResetScene;
     }
 
     void Update()
@@ -42,9 +40,6 @@ public class PuzzleRoom1_WD40 : MonoBehaviour
         {
             MessagePanel.SetActive(true);
             KeyPanel.SetActive(true);
-
-            MessagePanel.gameObject.SetActive(false);
-            KeyPanel.gameObject.SetActive(false);
             InReach = true;
         }
     }
@@ -57,5 +52,15 @@ public class PuzzleRoom1_WD40 : MonoBehaviour
             KeyPanel.SetActive(false);
             InReach = false;
         }
+    }
+
+    private void OnResetScene()
+    {
+        ResetWDs();
+    }
+    private void ResetWDs()
+    {
+        WD40.SetActive(true);
+        isPickedUp = false;
     }
 }
