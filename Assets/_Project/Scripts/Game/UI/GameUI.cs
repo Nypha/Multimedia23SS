@@ -3,6 +3,8 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameUI : MonoBehaviour
@@ -19,9 +21,25 @@ public class GameUI : MonoBehaviour
     [SerializeField] private Slider timerSlider;
     [SerializeField] private TextMeshProUGUI tfDeathKeyHint;
     [SerializeField] private GameObject deathHint;
+    // [SerializeField] private float menuTimer = 5f;
+    // [SerializeField] private float menuTimerHint = 5f;
+    // [SerializeField] private Slider menuTimerSlider;
+    [Space]
+    [SerializeField] private Button bnContinue;
+    [SerializeField] private Button bnReset;
+    [SerializeField] private Button bnExit;
+    [SerializeField] private Slider slider;
+    [SerializeField] private TextMeshProUGUI tfSliderValue;
+    [SerializeField] private TMP_InputField inputField;
+    [SerializeField] private GameObject loadingOverlay;
 
 
     private float minimapTargetAlpha;
+
+    // private bool escEverReleased;
+    // private float escHoldTimer;
+    // private bool startTimer;
+
 
     private void Awake()
     {
@@ -35,6 +53,22 @@ public class GameUI : MonoBehaviour
         }
 
         HideMinimap(false);
+
+        bnContinue.onClick.AddListener(() => HideMenu());
+        bnExit.onClick.AddListener(() =>
+        {
+            SceneManager.LoadScene("Menu_Scene");
+            loadingOverlay.SetActive(true);
+        });
+        bnReset.onClick.AddListener(() =>
+        {
+            GameSceneManager.Instance.ResetScene();
+            HideMenu();
+        });
+        slider.onValueChanged.AddListener(OnSetVolume);
+        slider.SetValueWithoutNotify(Settings.Volume);
+        inputField.onValueChanged.AddListener(OnSetPlayerName);
+        inputField.SetTextWithoutNotify(Settings.PlayerName);
     }
     private void Start()
     {
@@ -58,6 +92,36 @@ public class GameUI : MonoBehaviour
                 minimap.alpha = minimapTargetAlpha;
             }
         }
+
+        // if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        // {
+        //     escHoldTimer = menuTimer;
+        //     startTimer = true;
+        // }
+        // if (Keyboard.current.escapeKey.wasReleasedThisFrame)
+        // {
+        //     if (escEverReleased)
+        //     {
+        //         if (escHoldTimer > 0)
+        //         {
+        //             HideMenu();
+        //         }
+        //         else
+        //         {
+        //             SceneManager.LoadSceneAsync("Menu_Scene");
+        //         }
+        //     }
+        //     else 
+        //     {
+        //         escEverReleased = true;
+        //     }
+        // }
+        // menuTimerSlider.gameObject.SetActive(escHoldTimer < menuTimerHint);
+        // menuTimerSlider.value = menuTimer - escHoldTimer;
+        // if (startTimer)
+        // {
+        //     escHoldTimer -= Time.deltaTime;
+        // }
     }
 
     private void OnResetScene()
@@ -72,6 +136,11 @@ public class GameUI : MonoBehaviour
     {
         mainMenu.SetActive(true);
         characterController.SetActive(false);
+        // escEverReleased = false;
+        // startTimer = false;
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
     public void HideMenu()
     {
@@ -115,5 +184,17 @@ public class GameUI : MonoBehaviour
         deathHint.SetActive(true);
         yield return new WaitForSeconds(duration);
         deathHint.SetActive(false);
-    }    
+    }
+
+
+    private void OnSetPlayerName(string arg0)
+    {
+        Settings.PlayerName = arg0;
+    }
+
+    private void OnSetVolume(float arg0)
+    {
+        Settings.Volume = arg0;
+        tfSliderValue.text = $"{arg0 * 100:n0}%";
+    }
 }

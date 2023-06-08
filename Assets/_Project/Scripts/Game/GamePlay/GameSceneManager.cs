@@ -48,12 +48,12 @@ public class GameSceneManager : MonoBehaviour
     {
         if (Keyboard.current.escapeKey.wasPressedThisFrame)
         {
-            if (GameUI.Instance.IsMenuActive)
+            if (!GameUI.Instance.IsMenuActive)
             {
-                GameUI.Instance.HideMenu();
-            }
-            else
-            {
+            //     GameUI.Instance.HideMenu();
+            // }
+            // else
+            // {
                 GameUI.Instance.ShowMenu();
             }
         }
@@ -88,6 +88,7 @@ public class GameSceneManager : MonoBehaviour
                 timerTime += timeAddPerKeyPress;
                 GetNextTimerControl();
             }
+            GameUI.Instance.SetTimerInputText(currentTimerControl.displayName);
         }
     }
 
