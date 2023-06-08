@@ -1,3 +1,4 @@
+using PlasticPipe.PlasticProtocol.Messages;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,12 +20,7 @@ public class TV : MonoBehaviour
     private void Awake()
     {
         propBlock = new MaterialPropertyBlock();
-        noiseTextures = new List<Texture2D>();
-        for (int i = 0; i < 60; i++)
-        {
-            noiseTextures.Add(CreateNoiseTexture(i, 720, 576));
-        }
-
+        noiseTextures = NoiseTextureMaker.CreateNoiseTextures(720, 576, 60);
         isOn = true;
         HandleState();
     }
@@ -73,9 +69,24 @@ public class TV : MonoBehaviour
             videoObject.SetActive(false);
             noiseRenderer.gameObject.SetActive(false);
         }
-    }
+    }    
+}
 
-    private Texture2D CreateNoiseTexture(float seed, int width, int height)
+public static class NoiseTextureMaker
+{
+    public static List<Texture2D> CreateNoiseTextures(int width, int height, int count)
+    {
+        var result = new List<Texture2D>();
+        var textureHash = Guid.NewGuid().ToString().Substring(0, 5);
+        for (int i = 0; i < count; i++)
+        {
+            var texture = CreateNoiseTexture(i, width, height);
+            texture.name = $"Texture-{textureHash}-{i}";
+            result.Add(texture);
+        }
+        return result;
+    }
+    public static Texture2D CreateNoiseTexture(float seed, int width, int height)
     {
         var texture = new Texture2D(width, height);
         var colors = new Color32[width * height];

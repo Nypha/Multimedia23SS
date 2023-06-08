@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4720509471647536452}
   - component: {fileID: 2472759950003293786}
   - component: {fileID: 1686431033053322891}
-  - component: {fileID: 5565694741801952898}
-  m_Layer: 9
+  - component: {fileID: 8666073209698476655}
+  m_Layer: 0
   m_Name: Quad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3c03e52377c91c7489b2bed5f8ba4323, type: 2}
+  - {fileID: 2100000, guid: ce06c9079fc7cff478f8b61417c5bcab, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,20 +84,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5565694741801952898
-MeshCollider:
+--- !u!114 &8666073209698476655
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1289008510149780393}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c51cc124b0aa2e4681353bcca29a34c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onBecameVisible:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4583707701809870751}
+        m_TargetAssemblyTypeName: ChangingImage, Assembly-CSharp
+        m_MethodName: SwapImage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onBecameInvisible:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6489018591135461484
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,7 +123,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8238383116362316605}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: ScaleNode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,8 +139,8 @@ Transform:
   m_GameObject: {fileID: 6489018591135461484}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4720509471647536452}
   m_Father: {fileID: 5377273848958679623}
@@ -139,7 +155,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5377273848958679623}
-  m_Layer: 9
+  - component: {fileID: 4583707701809870751}
+  m_Layer: 0
   m_Name: ChangingImage_Pref
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,3 +179,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4583707701809870751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6866086406285030461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afe3d4244ed1a234a8daaa8ef9e28f28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderer: {fileID: 1686431033053322891}
+  setAlternatingNoise: 1
+  textures:
+  - {fileID: 2800000, guid: b18eff330f1cfee49a3402fa659effbf, type: 3}
+  - {fileID: 2800000, guid: a24829537c19bdb4abe5a6a6c686bfbd, type: 3}
+  - {fileID: 2800000, guid: c403740eaade12a4ab13bb8296118bf2, type: 3}
+  - {fileID: 2800000, guid: 2490b9972dd80d94c95d7b9df2f2a589, type: 3}
+  - {fileID: 2800000, guid: 59a058458a615b8429c7d62289efc9b5, type: 3}

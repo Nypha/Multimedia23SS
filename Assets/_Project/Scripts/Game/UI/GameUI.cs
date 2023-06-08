@@ -135,7 +135,7 @@ public class GameUI : MonoBehaviour
     public void ShowMenu()
     {
         mainMenu.SetActive(true);
-        characterController.SetActive(false);
+        // characterController.SetActive(false);
         // escEverReleased = false;
         // startTimer = false;
 
@@ -145,7 +145,7 @@ public class GameUI : MonoBehaviour
     public void HideMenu()
     {
         mainMenu.SetActive(false);
-        characterController.SetActive(true);
+        // characterController.SetActive(true);
     }
 
     public void ShowMinimap()
