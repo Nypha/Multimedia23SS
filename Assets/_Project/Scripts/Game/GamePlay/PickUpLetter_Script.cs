@@ -27,7 +27,12 @@ public class PickUpLetter_Script : MonoBehaviour
     {
         if(Keyboard.current.eKey.wasPressedThisFrame)
         {
-            if(InReach == true)
+            if (note.enabled == true)
+            {
+                note.enabled = false;
+            }
+
+            if (InReach == true)
             {
                 if(note.enabled == false)
                 {
@@ -36,11 +41,8 @@ public class PickUpLetter_Script : MonoBehaviour
                     InReach = false;
                     note.enabled = true;
                 }
-                else if (note.enabled == true)
-                {
-                    note.enabled = false;
-                }
             }
+            
         }
     }
 
