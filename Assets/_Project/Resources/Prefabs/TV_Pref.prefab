@@ -53,6 +53,7 @@ MonoBehaviour:
   noiseRenderer: {fileID: 3477743735882412584}
   videoPlayer: {fileID: 3082748989769478648}
   videoObject: {fileID: 7627591392140875370}
+  noiseColor: {r: 0.59318256, g: 0.7858009, b: 0.8773585, a: 1}
 --- !u!1 &1473286416493651081
 GameObject:
   m_ObjectHideFlags: 0

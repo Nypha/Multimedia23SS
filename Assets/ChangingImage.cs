@@ -9,6 +9,7 @@ public class ChangingImage : MonoBehaviour
     [SerializeField] private bool setAlternatingNoise;
     [SerializeField] private List<Texture2D> textures;
     [SerializeField] private bool startRandom;
+    [SerializeField] private Color noiseColor = Color.white;
 
     private MaterialPropertyBlock propBlock;
     private List<Texture2D> noiseTextures;
@@ -41,7 +42,7 @@ public class ChangingImage : MonoBehaviour
     {
         if (setAlternatingNoise)
         {
-            noiseTextures = NoiseTextureMaker.CreateNoiseTextures(300, 400, 60);
+            noiseTextures = NoiseTextureMaker.CreateNoiseTextures(300, 400, 60, noiseColor, false);
         }
         SetTexture(textures[startRandom ? Random.Range(0, textures.Count) : 0]);
     }

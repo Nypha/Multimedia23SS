@@ -9,6 +9,7 @@ public class TV : MonoBehaviour
     [SerializeField] private Renderer noiseRenderer;
     [SerializeField] private VideoPlayer videoPlayer;
     [SerializeField] private GameObject videoObject;
+    [SerializeField] private Color noiseColor = Color.white;
 
     private bool isOn;
     private int channel;
@@ -20,7 +21,7 @@ public class TV : MonoBehaviour
     private void Awake()
     {
         propBlock = new MaterialPropertyBlock();
-        noiseTextures = NoiseTextureMaker.CreateNoiseTextures(720, 576, 60);
+        noiseTextures = NoiseTextureMaker.CreateNoiseTextures(720, 576, 60, noiseColor, true);
         isOn = true;
         HandleState();
     }
@@ -76,7 +77,7 @@ public static class NoiseTextureMaker
 {
     private static List<Texture2D> cachedTextures;
 
-    public static List<Texture2D> CreateNoiseTextures(int width, int height, int count)
+    public static List<Texture2D> CreateNoiseTextures(int width, int height, int count, Color color, bool forceNew)
     {
         if (cachedTextures == null)
         {
@@ -87,7 +88,7 @@ public static class NoiseTextureMaker
         int missingTextures = count - cachedTextures.Count;
         for (int i = 0; i < missingTextures; i++)
         {
-            cachedTextures.Add(CreateNoiseTexture(i, width, height));
+            cachedTextures.Add(CreateNoiseTexture(i, width, height, color));
         }
         var uniqueRandom = new List<int>();
         for (int i = 0; i < count; i++)
@@ -96,14 +97,21 @@ public static class NoiseTextureMaker
         }
         for (int i = 0; i < count; i++)
         {
-            var index = uniqueRandom.RandomElement();
-            uniqueRandom.Remove(index);
-            result.Add(cachedTextures[index]);
+            if (forceNew)
+            {
+                result.Add(CreateNoiseTexture(i, width, height, color));
+            }
+            else 
+            { 
+                var index = uniqueRandom.RandomElement();
+                uniqueRandom.Remove(index);
+                result.Add(cachedTextures[index]);
+            }
         }
 
         return result;
     }
-    public static Texture2D CreateNoiseTexture(float seed, int width, int height)
+    public static Texture2D CreateNoiseTexture(float seed, int width, int height, Color color)
     {
         var texture = new Texture2D(width, height);
         var colors = new Color32[width * height];
@@ -113,8 +121,8 @@ public static class NoiseTextureMaker
             for (int x = 0; x < width; x++)
             {
                 var value = UnityEngine.Random.Range(0f, 1f);
-                // var value = Mathf.PerlinNoise((x + (seed * 1000) % 137) / 100, (y + (seed * 1000) % 137) / 100);
-                colors[i] = new Color32((byte)(value * 255), (byte)(value * 255), (byte)(value * 255), 255);
+                var pixelColor = new Color32((byte)(value * color.r * 255), (byte)(value * color.g * 255), (byte)(value * color.b * 255), 255);
+                colors[i] = pixelColor;
                 i++;
             }
         }
