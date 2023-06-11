@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The Rumors of Poollandia
+  m_text: The Rumors of <color=#5920BA>Poollandia</color>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ebc50696fb82a5b43a8d79136029127e, type: 2}
   m_sharedMaterial: {fileID: 3061750768248025230, guid: ebc50696fb82a5b43a8d79136029127e, type: 2}
@@ -202,7 +202,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The Rumors of Poollandia
+  m_text: The Rumors of <color=#8561C3>Poollandia</color>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ebc50696fb82a5b43a8d79136029127e, type: 2}
   m_sharedMaterial: {fileID: 3061750768248025230, guid: ebc50696fb82a5b43a8d79136029127e, type: 2}

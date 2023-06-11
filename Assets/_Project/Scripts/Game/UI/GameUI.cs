@@ -1,5 +1,4 @@
-﻿using PlasticPipe.Client;
-using System;
+﻿using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -39,6 +38,7 @@ public class GameUI : MonoBehaviour
 
 
     private float minimapTargetAlpha;
+    private bool animateEndScreen;
 
 
     private void Awake()
@@ -102,6 +102,12 @@ public class GameUI : MonoBehaviour
                 minimap.alpha = minimapTargetAlpha;
             }
         }
+
+        if (animateEndScreen)
+        {
+            AnimateText(tfGameEnd);
+            AnimateText(tfGameEnd2);
+        }
     }
 
     private void OnResetScene()
@@ -134,7 +140,7 @@ public class GameUI : MonoBehaviour
         {
             minimap.alpha = 0f;
         }
-    }    
+    }
 
     public void ShowTimer()
     {
@@ -147,7 +153,7 @@ public class GameUI : MonoBehaviour
     }
     public void SetTimerInputText(string displayName)
     {
-        tfDeathKeyHint.text = $"Press [{displayName}] for more time!";
+        tfDeathKeyHint.text = $"Press <i>[{displayName}]</i> for more time!";
     }
 
     public void ShowDeathHint(float duration)
@@ -176,12 +182,38 @@ public class GameUI : MonoBehaviour
     public void ShowGameEndScreen()
     {
         gameEndScreen.SetActive(true);
-        tfGameEnd.text = tfGameEnd2.text = $"You made it out alive, {Settings.PlayerName}!";
+        tfGameEnd.text = tfGameEnd2.text = $"You made it out alive, <i>{Settings.PlayerName}</i>!";
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        animateEndScreen = true;
     }
     public void HideGameEndScreen()
     {
         gameEndScreen.SetActive(false);
+        animateEndScreen = false;
+    }
+    private void AnimateText(TextMeshProUGUI textField)
+    {
+        textField.ForceMeshUpdate();
+        var textInfo = textField.textInfo;
+        for (int i = 0; i < textField.textInfo.characterInfo.Length; ++i)
+        {
+            var charInfo = textInfo.characterInfo[i];
+            if (charInfo.isVisible)
+            {
+                var verts = textInfo.meshInfo[charInfo.materialReferenceIndex].vertices;
+                for (int j = 0; j < 4; ++j)
+                {
+                    var orig = verts[charInfo.vertexIndex + j];
+                    verts[charInfo.vertexIndex + j] = orig + new Vector3(0, Mathf.Sin(Time.time * 2f + orig.x * 0.01f) * 10f, 0);
+                }
+            }
+        }
+        for (int i = 0; i < textInfo.meshInfo.Length; ++i)
+        {
+            var meshInfo = textInfo.meshInfo[i];
+            meshInfo.mesh.vertices = meshInfo.vertices;
+            textField.UpdateGeometry(meshInfo.mesh, i);
+        }
     }
 }
