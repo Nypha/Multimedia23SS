@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class ChangingImage : MonoBehaviour
@@ -7,12 +8,14 @@ public class ChangingImage : MonoBehaviour
     [SerializeField] private new Renderer renderer;
     [SerializeField] private bool setAlternatingNoise;
     [SerializeField] private List<Texture2D> textures;
+    [SerializeField] private bool startRandom;
 
     private MaterialPropertyBlock propBlock;
     private List<Texture2D> noiseTextures;
 
     private int textureIndex;
     private bool showNoiseTexture;
+
 
     public void SwapImage()
     {
@@ -40,7 +43,7 @@ public class ChangingImage : MonoBehaviour
         {
             noiseTextures = NoiseTextureMaker.CreateNoiseTextures(300, 400, 60);
         }
-        SetTexture(textures[0]);
+        SetTexture(textures[startRandom ? Random.Range(0, textures.Count) : 0]);
     }
     private void Update()
     {

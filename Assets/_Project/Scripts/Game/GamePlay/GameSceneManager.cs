@@ -129,4 +129,8 @@ public class GameSceneManager : MonoBehaviour
         isTimerRunning = true;
         timerTime = maxTimeSeconds;
     }
+    public void StopTimer()
+    {
+        isTimerRunning = false;
+    }
 }

@@ -21,9 +21,6 @@ public class GameUI : MonoBehaviour
     [SerializeField] private Slider timerSlider;
     [SerializeField] private TextMeshProUGUI tfDeathKeyHint;
     [SerializeField] private GameObject deathHint;
-    // [SerializeField] private float menuTimer = 5f;
-    // [SerializeField] private float menuTimerHint = 5f;
-    // [SerializeField] private Slider menuTimerSlider;
     [Space]
     [SerializeField] private Button bnContinue;
     [SerializeField] private Button bnReset;
@@ -33,12 +30,15 @@ public class GameUI : MonoBehaviour
     [SerializeField] private TMP_InputField inputField;
     [SerializeField] private GameObject loadingOverlay;
 
+    [Space]
+    [SerializeField] private GameObject gameEndScreen;
+    [SerializeField] private TextMeshProUGUI tfGameEnd;
+    [SerializeField] private TextMeshProUGUI tfGameEnd2;
+    [SerializeField] private Button bnGameEndReset;
+    [SerializeField] private Button bnGameEndExit;
+
 
     private float minimapTargetAlpha;
-
-    // private bool escEverReleased;
-    // private float escHoldTimer;
-    // private bool startTimer;
 
 
     private void Awake()
@@ -60,10 +60,20 @@ public class GameUI : MonoBehaviour
             SceneManager.LoadScene("Menu_Scene");
             loadingOverlay.SetActive(true);
         });
+        bnGameEndExit.onClick.AddListener(() =>
+        {
+            SceneManager.LoadScene("Menu_Scene");
+            loadingOverlay.SetActive(true);
+        });
         bnReset.onClick.AddListener(() =>
         {
             GameSceneManager.Instance.ResetScene();
             HideMenu();
+        });
+        bnGameEndReset.onClick.AddListener(() =>
+        {
+            GameSceneManager.Instance.ResetScene();
+            HideGameEndScreen();
         });
         slider.onValueChanged.AddListener(OnSetVolume);
         slider.SetValueWithoutNotify(Settings.Volume);
@@ -92,36 +102,6 @@ public class GameUI : MonoBehaviour
                 minimap.alpha = minimapTargetAlpha;
             }
         }
-
-        // if (Keyboard.current.escapeKey.wasPressedThisFrame)
-        // {
-        //     escHoldTimer = menuTimer;
-        //     startTimer = true;
-        // }
-        // if (Keyboard.current.escapeKey.wasReleasedThisFrame)
-        // {
-        //     if (escEverReleased)
-        //     {
-        //         if (escHoldTimer > 0)
-        //         {
-        //             HideMenu();
-        //         }
-        //         else
-        //         {
-        //             SceneManager.LoadSceneAsync("Menu_Scene");
-        //         }
-        //     }
-        //     else 
-        //     {
-        //         escEverReleased = true;
-        //     }
-        // }
-        // menuTimerSlider.gameObject.SetActive(escHoldTimer < menuTimerHint);
-        // menuTimerSlider.value = menuTimer - escHoldTimer;
-        // if (startTimer)
-        // {
-        //     escHoldTimer -= Time.deltaTime;
-        // }
     }
 
     private void OnResetScene()
@@ -135,17 +115,12 @@ public class GameUI : MonoBehaviour
     public void ShowMenu()
     {
         mainMenu.SetActive(true);
-        // characterController.SetActive(false);
-        // escEverReleased = false;
-        // startTimer = false;
-
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
     public void HideMenu()
     {
         mainMenu.SetActive(false);
-        // characterController.SetActive(true);
     }
 
     public void ShowMinimap()
@@ -196,5 +171,17 @@ public class GameUI : MonoBehaviour
     {
         Settings.Volume = arg0;
         tfSliderValue.text = $"{arg0 * 100:n0}%";
+    }
+
+    public void ShowGameEndScreen()
+    {
+        gameEndScreen.SetActive(true);
+        tfGameEnd.text = tfGameEnd2.text = $"You made it out alive, {Settings.PlayerName}!";
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+    public void HideGameEndScreen()
+    {
+        gameEndScreen.SetActive(false);
     }
 }

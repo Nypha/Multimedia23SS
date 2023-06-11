@@ -74,16 +74,33 @@ public class TV : MonoBehaviour
 
 public static class NoiseTextureMaker
 {
+    private static List<Texture2D> cachedTextures;
+
     public static List<Texture2D> CreateNoiseTextures(int width, int height, int count)
     {
+        if (cachedTextures == null)
+        {
+            cachedTextures = new List<Texture2D>();
+        }
+
         var result = new List<Texture2D>();
-        var textureHash = Guid.NewGuid().ToString().Substring(0, 5);
+        int missingTextures = count - cachedTextures.Count;
+        for (int i = 0; i < missingTextures; i++)
+        {
+            cachedTextures.Add(CreateNoiseTexture(i, width, height));
+        }
+        var uniqueRandom = new List<int>();
         for (int i = 0; i < count; i++)
         {
-            var texture = CreateNoiseTexture(i, width, height);
-            texture.name = $"Texture-{textureHash}-{i}";
-            result.Add(texture);
+            uniqueRandom.Add(i);
         }
+        for (int i = 0; i < count; i++)
+        {
+            var index = uniqueRandom.RandomElement();
+            uniqueRandom.Remove(index);
+            result.Add(cachedTextures[index]);
+        }
+
         return result;
     }
     public static Texture2D CreateNoiseTexture(float seed, int width, int height)

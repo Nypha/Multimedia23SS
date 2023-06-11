@@ -39,6 +39,9 @@ public class Door : MonoBehaviour
     public void Open()
     {
         isOpen = true;
-        spraySound.Play();
+        if (spraySound != null)
+        {
+            spraySound.Play();
+        }
     }
 }
