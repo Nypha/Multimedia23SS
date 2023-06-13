@@ -108,6 +108,12 @@ public class GameUI : MonoBehaviour
             AnimateText(tfGameEnd);
             AnimateText(tfGameEnd2);
         }
+
+        if (mainMenu.activeSelf)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 
     private void OnResetScene()

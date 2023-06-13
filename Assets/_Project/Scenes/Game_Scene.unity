@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 613.2588, g: 625.9834, b: 703.43066, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -278,14 +278,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &492721267 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6720876781187679330, guid: 312394929aca7c64ea64652f6be8c765, type: 3}
+  m_PrefabInstance: {fileID: 4997003580640409103}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &551074925 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4997003581512739097, guid: 312394929aca7c64ea64652f6be8c765, type: 3}
-  m_PrefabInstance: {fileID: 4997003580640409103}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &564147756 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1737744708048599060, guid: 312394929aca7c64ea64652f6be8c765, type: 3}
   m_PrefabInstance: {fileID: 4997003580640409103}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &779697723
@@ -1096,30 +1096,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3803082403973177067, guid: 312394929aca7c64ea64652f6be8c765, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 4141137394084362976, guid: 312394929aca7c64ea64652f6be8c765, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.067
-      objectReference: {fileID: 0}
-    - target: {fileID: 4141137394084362976, guid: 312394929aca7c64ea64652f6be8c765, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -3.334
-      objectReference: {fileID: 0}
-    - target: {fileID: 4141137394084362976, guid: 312394929aca7c64ea64652f6be8c765, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.98934996
-      objectReference: {fileID: 0}
-    - target: {fileID: 4141137394084362976, guid: 312394929aca7c64ea64652f6be8c765, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.1455565
-      objectReference: {fileID: 0}
-    - target: {fileID: 4141137394084362976, guid: 312394929aca7c64ea64652f6be8c765, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 16.739
-      objectReference: {fileID: 0}
     - target: {fileID: 4997003581512739096, guid: 312394929aca7c64ea64652f6be8c765, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1168,29 +1144,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character_Pref
       objectReference: {fileID: 0}
-    - target: {fileID: 4997003581512739097, guid: 312394929aca7c64ea64652f6be8c765, type: 3}
-      propertyPath: m_TagString
-      value: Player
+    - target: {fileID: 6311563952769258084, guid: 312394929aca7c64ea64652f6be8c765, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6412387129091307486, guid: 312394929aca7c64ea64652f6be8c765, type: 3}
-      propertyPath: m_BoundingSphereOverride.w
-      value: 1.9365842e+31
+    - target: {fileID: 6404908945999506389, guid: 312394929aca7c64ea64652f6be8c765, type: 3}
+      propertyPath: switchCurve.m_Curve.Array.data[0].inSlope
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6412387129091307486, guid: 312394929aca7c64ea64652f6be8c765, type: 3}
-      propertyPath: m_BoundingSphereOverride.x
-      value: 9.7689384e+11
+    - target: {fileID: 6404908945999506389, guid: 312394929aca7c64ea64652f6be8c765, type: 3}
+      propertyPath: switchCurve.m_Curve.Array.data[1].inSlope
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6412387129091307486, guid: 312394929aca7c64ea64652f6be8c765, type: 3}
-      propertyPath: m_BoundingSphereOverride.y
-      value: NaN
+    - target: {fileID: 6404908945999506389, guid: 312394929aca7c64ea64652f6be8c765, type: 3}
+      propertyPath: switchCurve.m_Curve.Array.data[0].outSlope
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6412387129091307486, guid: 312394929aca7c64ea64652f6be8c765, type: 3}
-      propertyPath: m_BoundingSphereOverride.z
-      value: 6.450639e+28
+    - target: {fileID: 6404908945999506389, guid: 312394929aca7c64ea64652f6be8c765, type: 3}
+      propertyPath: switchCurve.m_Curve.Array.data[1].outSlope
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7102191000195063419, guid: 312394929aca7c64ea64652f6be8c765, type: 3}
-      propertyPath: m_TagString
-      value: Player
+    - target: {fileID: 6404908945999506389, guid: 312394929aca7c64ea64652f6be8c765, type: 3}
+      propertyPath: switchCurve.m_Curve.Array.data[0].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404908945999506389, guid: 312394929aca7c64ea64652f6be8c765, type: 3}
+      propertyPath: switchCurve.m_Curve.Array.data[1].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7208773740959906299, guid: 312394929aca7c64ea64652f6be8c765, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8553775817859643632, guid: 312394929aca7c64ea64652f6be8c765, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 312394929aca7c64ea64652f6be8c765, type: 3}
@@ -1212,7 +1200,7 @@ PrefabInstance:
     - target: {fileID: 8402652918206761112, guid: 63111285e5f5bd549b71ba15f81e8af5, type: 3}
       propertyPath: Player2
       value: 
-      objectReference: {fileID: 564147756}
+      objectReference: {fileID: 492721267}
     - target: {fileID: 8402652918206761112, guid: 63111285e5f5bd549b71ba15f81e8af5, type: 3}
       propertyPath: OpaqueMat
       value: 
