@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -35,6 +36,15 @@ public class GameUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI tfGameEnd2;
     [SerializeField] private Button bnGameEndReset;
     [SerializeField] private Button bnGameEndExit;
+
+    [Space]
+    [SerializeField] private Toggle toggle0;
+    [SerializeField] private TMP_Dropdown dropdown0;
+    [SerializeField] private Toggle toggle1;
+    [SerializeField] private TMP_Dropdown dropdown1;
+    [SerializeField] private Toggle toggle2;
+    [SerializeField] private TMP_Dropdown dropdown2;
+    [SerializeField] private List<Color> styles;
 
 
     private float minimapTargetAlpha;
@@ -79,6 +89,45 @@ public class GameUI : MonoBehaviour
         slider.SetValueWithoutNotify(Settings.Volume);
         inputField.onValueChanged.AddListener(OnSetPlayerName);
         inputField.SetTextWithoutNotify(Settings.PlayerName);
+
+        toggle0.onValueChanged.AddListener((isOn) =>
+        {
+            Settings.PlayerCustomizationDirty = true;
+            Settings.HasShoes = isOn;
+        });
+        toggle1.onValueChanged.AddListener((isOn) =>
+        {
+            Settings.PlayerCustomizationDirty = true;
+            Settings.HasPants = isOn;
+        });
+        toggle2.onValueChanged.AddListener((isOn) =>
+        {
+            Settings.PlayerCustomizationDirty = true;
+            Settings.HasPullover = isOn;
+        });
+
+        dropdown0.onValueChanged.AddListener((value) =>
+        {
+            Settings.PlayerCustomizationDirty = true;
+            Settings.StyleShoes = styles[value];
+        });
+        dropdown1.onValueChanged.AddListener((value) =>
+        {
+            Settings.PlayerCustomizationDirty = true;
+            Settings.StylePants = styles[value];
+        });
+        dropdown2.onValueChanged.AddListener((value) =>
+        {
+            Settings.PlayerCustomizationDirty = true;
+            Settings.StylePullover = styles[value];
+        });
+
+        toggle0.isOn = Settings.HasShoes;
+        toggle1.isOn = Settings.HasPants;
+        toggle2.isOn = Settings.HasPullover;
+        dropdown0.value = 2;
+        dropdown1.value = 1;
+        dropdown2.value = 2;
     }
     private void Start()
     {
@@ -107,6 +156,12 @@ public class GameUI : MonoBehaviour
         {
             AnimateText(tfGameEnd);
             AnimateText(tfGameEnd2);
+        }
+
+        if (mainMenu.activeSelf)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 
