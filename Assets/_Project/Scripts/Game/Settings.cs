@@ -13,12 +13,4 @@ public static class Settings
     }
     private static float volume = 1f;
     public static string PlayerName { get; set; } = "Player 1";
-
-    public static bool PlayerCustomizationDirty { get; set; }
-    public static bool HasShoes { get; set; }
-    public static bool HasPants { get; set; }
-    public static bool HasPullover { get; set; }
-    public static Color StyleShoes { get; set; }
-    public static Color StylePants { get; set; }
-    public static Color StylePullover { get; set; }
 }
