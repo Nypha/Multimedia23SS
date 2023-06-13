@@ -17,12 +17,16 @@ public class GameSceneManager : MonoBehaviour
     [SerializeField] private float timeAddPerKeyPress;
     [SerializeField] private CharacterController player;
     [SerializeField] private Volume deathVolume; 
+    [SerializeField] private GameObject Player2;
+    [SerializeField] private Material OpaqueMat;
+    [SerializeField] private Material TransparentMat;
 
     private Vector3 playerStartPosition;
 
     private bool isTimerRunning;
     private float timerTime;
     private bool hasTimerUiToggled;
+    private bool isTransparentMat;
 
     private KeyControl currentTimerControl;
 
@@ -46,6 +50,7 @@ public class GameSceneManager : MonoBehaviour
     }
     private void Update()
     {
+
         if (Keyboard.current.escapeKey.wasPressedThisFrame)
         {
             if (!GameUI.Instance.IsMenuActive)
@@ -80,7 +85,6 @@ public class GameSceneManager : MonoBehaviour
                 GameUI.Instance.ShowDeathHint(5);
             }
         }
-
         if (hasTimerUiToggled && currentTimerControl != null)
         {
             if (currentTimerControl.wasPressedThisFrame)
@@ -90,24 +94,38 @@ public class GameSceneManager : MonoBehaviour
             }
             GameUI.Instance.SetTimerInputText(currentTimerControl.displayName);
         }
+
     }
 
     private void GetNextTimerControl()
     {
         switch (Random.Range(0, 10))
         {
-            case 0: currentTimerControl = Keyboard.current.uKey; break;
-            case 1: currentTimerControl = Keyboard.current.pKey; break;
-            case 2: currentTimerControl = Keyboard.current.lKey; break;
-            case 3: currentTimerControl = Keyboard.current.jKey; break;
-            case 4: currentTimerControl = Keyboard.current.mKey; break;
-            case 5: currentTimerControl = Keyboard.current.hKey; break;
-            case 6: currentTimerControl = Keyboard.current.nKey; break;
-            case 7: currentTimerControl = Keyboard.current.tKey; break;
-            case 8: currentTimerControl = Keyboard.current.bKey; break;
-            case 9: currentTimerControl = Keyboard.current.iKey; break;
+            case 0: currentTimerControl = Keyboard.current.uKey; ChangeMaterial(); break;
+            case 1: currentTimerControl = Keyboard.current.pKey; ChangeMaterial(); break;
+            case 2: currentTimerControl = Keyboard.current.lKey; ChangeMaterial(); break;
+            case 3: currentTimerControl = Keyboard.current.jKey; ChangeMaterial(); break;
+            case 4: currentTimerControl = Keyboard.current.mKey; ChangeMaterial(); break;
+            case 5: currentTimerControl = Keyboard.current.hKey; ChangeMaterial(); break;
+            case 6: currentTimerControl = Keyboard.current.nKey; ChangeMaterial(); break;
+            case 7: currentTimerControl = Keyboard.current.tKey; ChangeMaterial(); break;
+            case 8: currentTimerControl = Keyboard.current.bKey; ChangeMaterial(); break;
+            case 9: currentTimerControl = Keyboard.current.iKey; ChangeMaterial(); break;
         }
         GameUI.Instance.SetTimerInputText(currentTimerControl.displayName);
+    }
+
+    public void ChangeMaterial()
+    {
+        if (isTransparentMat)
+        {
+            Player2.GetComponent<MeshRenderer>().material = OpaqueMat;
+        }
+        if (!isTransparentMat)
+        {
+            Player2.GetComponent<MeshRenderer>().material = TransparentMat;
+        }
+        isTransparentMat = !isTransparentMat;
     }
 
     public void ResetScene()

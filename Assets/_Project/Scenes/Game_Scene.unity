@@ -283,6 +283,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4997003581512739097, guid: 312394929aca7c64ea64652f6be8c765, type: 3}
   m_PrefabInstance: {fileID: 4997003580640409103}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &564147756 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1737744708048599060, guid: 312394929aca7c64ea64652f6be8c765, type: 3}
+  m_PrefabInstance: {fileID: 4997003580640409103}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &779697723
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1167,6 +1172,22 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6412387129091307486, guid: 312394929aca7c64ea64652f6be8c765, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 1.9365842e+31
+      objectReference: {fileID: 0}
+    - target: {fileID: 6412387129091307486, guid: 312394929aca7c64ea64652f6be8c765, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 9.7689384e+11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6412387129091307486, guid: 312394929aca7c64ea64652f6be8c765, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: NaN
+      objectReference: {fileID: 0}
+    - target: {fileID: 6412387129091307486, guid: 312394929aca7c64ea64652f6be8c765, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 6.450639e+28
+      objectReference: {fileID: 0}
     - target: {fileID: 7102191000195063419, guid: 312394929aca7c64ea64652f6be8c765, type: 3}
       propertyPath: m_TagString
       value: Player
@@ -1188,6 +1209,18 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1923497455}
+    - target: {fileID: 8402652918206761112, guid: 63111285e5f5bd549b71ba15f81e8af5, type: 3}
+      propertyPath: Player2
+      value: 
+      objectReference: {fileID: 564147756}
+    - target: {fileID: 8402652918206761112, guid: 63111285e5f5bd549b71ba15f81e8af5, type: 3}
+      propertyPath: OpaqueMat
+      value: 
+      objectReference: {fileID: 2100000, guid: 46758fb5430e2f845966de4e70793c39, type: 2}
+    - target: {fileID: 8402652918206761112, guid: 63111285e5f5bd549b71ba15f81e8af5, type: 3}
+      propertyPath: TransparentMat
+      value: 
+      objectReference: {fileID: 2100000, guid: a1a0af1013f6ecf4f9fb6674297d03cd, type: 2}
     - target: {fileID: 8402652918206761112, guid: 63111285e5f5bd549b71ba15f81e8af5, type: 3}
       propertyPath: maxTimeSeconds
       value: 60
