@@ -2890,6 +2890,10 @@ PrefabInstance:
       propertyPath: m_text
       value: ESCAPE
       objectReference: {fileID: 0}
+    - target: {fileID: 4233703245789031227, guid: d3b567d9b1893634e8ef6304d3c3c7eb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4720455358757290511, guid: d3b567d9b1893634e8ef6304d3c3c7eb, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.66
@@ -2908,6 +2912,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4720455358757290511, guid: d3b567d9b1893634e8ef6304d3c3c7eb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5265938490228527606, guid: d3b567d9b1893634e8ef6304d3c3c7eb, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

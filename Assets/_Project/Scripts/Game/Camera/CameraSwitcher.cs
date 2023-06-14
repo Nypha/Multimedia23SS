@@ -8,6 +8,8 @@ public class CameraSwitcher : MonoBehaviour
 
     private Vector3 FirstPersonCam_Pos = new(0, 2, 0);
     private Vector3 ThirdPersonCam_Pos = new(0, -2, 0);
+    private Vector3 Underground_Pos = new(0, -50, 0);
+    private Vector3 Overground_Pos = new(0, +50, 0);
     private bool FirstPerson = false;
 
     public Camera ThirdPersonCam;
@@ -27,17 +29,18 @@ public class CameraSwitcher : MonoBehaviour
             if (FirstPerson)
             {
                 this.transform.Translate(ThirdPersonCam_Pos);
+                //transform.position = new Vector3(0, transform.position.y, (float)-3.334);
                 FirstPersonCam.enabled = false;
                 ThirdPersonCam.enabled = true;
-                Person.SetActive(true);
+                Person.transform.Translate(Overground_Pos);
             }
             else
             {
-                //this.transform.position = this.transform.position + FirstPersonCam_Pos;
                 this.transform.Translate(FirstPersonCam_Pos);
+                //transform.position = new Vector3(0, transform.position.y, 0);
                 FirstPersonCam.enabled = true;
                 ThirdPersonCam.enabled = false;
-                Person.SetActive(false);
+                Person.transform.Translate(Underground_Pos);
 
             }
             FirstPerson = !FirstPerson;

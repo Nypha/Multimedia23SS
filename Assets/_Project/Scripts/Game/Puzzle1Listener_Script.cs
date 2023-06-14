@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.InputSystem.Android;
 
 public class Puzzle1Listener_Script : MonoBehaviour
 {
